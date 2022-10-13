@@ -1,0 +1,8 @@
+rabbitmq:
+  uri: amqp://rabbit-mq:5672
+  username: jkube
+  password: pa33word
+mail:
+  queue:
+    send: mail.send.prod
+  from: prod@example.com

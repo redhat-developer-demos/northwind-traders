@@ -1,0 +1,27 @@
+micronaut:
+  application:
+    name: mail
+netty:
+  default:
+    allocator:
+      max-order: 3
+rabbitmq:
+  uri: amqp://localhost:5672
+  username: jkube
+  password: pa33word
+javamail:
+  properties:
+    mail:
+      transport:
+        protocol: smtp
+      smtp:
+        host: mail.mailinator.com
+        port: 25
+mail:
+  exchange:
+    send: mail.send
+  queue:
+    send: main.send.dev
+  from: dev@example.com
+  to: jkube@mailinator.com
+
