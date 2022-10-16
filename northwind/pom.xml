@@ -66,12 +66,12 @@
                 <type>NodePort</type>
               </localService>
             </localServices>
-            <remotePorts>
-              <remotePort>
+            <remoteServices>
+              <remoteService>
                 <hostname>northwind-db</hostname>
                 <port>5432</port>
-              </remotePort>
-            </remotePorts>
+              </remoteService>
+            </remoteServices>
           </remoteDevelopment>
         </configuration>
       </plugin>

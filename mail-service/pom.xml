@@ -68,12 +68,12 @@
         <version>${jkube.version}</version>
         <configuration>
           <remoteDevelopment>
-            <remotePorts>
-              <remotePort>
+            <remoteServices>
+              <remoteService>
                 <hostname>rabbit-mq</hostname>
                 <port>5672</port>
-              </remotePort>
-            </remotePorts>
+              </remoteService>
+            </remoteServices>
           </remoteDevelopment>
         </configuration>
       </plugin>
