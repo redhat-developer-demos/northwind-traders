@@ -1,0 +1,23 @@
+package com.marcnuri.demo.eclipsecon2022.northwind;
+
+import javax.inject.Inject;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
+@Path("/api/v1/mail")
+public class MailResource {
+
+  private final MailService mailService;
+
+  @Inject
+  public MailResource(MailService mailService) {
+    this.mailService = mailService;
+  }
+
+  @POST
+  @Path("/orders/{orderId}")
+  public void sendOrder(@PathParam("orderId") short orderId) {
+    mailService.sendOrder(orderId);
+  }
+}

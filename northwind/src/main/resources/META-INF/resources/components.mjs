@@ -35,19 +35,19 @@ export const Card = ({title, className = '', children}) => {
   return html`<${TheCard}>${children}</${TheCard}>`;
 };
 
-export const Table = ({className, children}) => (html`
+export const Table = ({className = '', children}) => (html`
   <table className=${`min-w-full ${className}`}>
     ${children}
   </table>
 `);
 
-Table.Head = ({className, children}) => (html`
+Table.Head = ({className = '', children}) => (html`
   <thead>
     <tr className=${className}>${children}</tr>
   </thead>
 `);
 
-Table.Column = ({className, children}) => (html`
+Table.Column = ({className = '', children}) => (html`
   <th className=${`px-3 py-2 text-left leading-4 font-semibold text-sm text-gray-600 uppercase ${className}`}>
     ${children}
   </th>

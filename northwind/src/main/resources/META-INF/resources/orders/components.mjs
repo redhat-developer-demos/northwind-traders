@@ -1,6 +1,7 @@
 const {html} = lib;
 import {POLLING_INTERVAL_MS, toCurrency} from '../app.mjs';
 import {Card, Table} from '../components.mjs';
+import {EnvelopeOutline} from '../icons.mjs';
 import {api} from './api.js';
 
 const OrderRows = ({}) => {
@@ -13,6 +14,11 @@ const OrderRows = ({}) => {
       <${Table.Cell} className='text-right'>${
         toCurrency(o.orderDetails.reduce((acc, od) => acc + (od.unitPrice * od.quantity), 0))
       }</${Table.Cell}>
+      <${Table.Cell}>
+        <button onClick=${async () => await api.sendOrder({orderId: o.orderId})}>
+          <${EnvelopeOutline} className='h-4 w-4' />
+        </button>
+      </${Table.Cell}>
     </${Table.Row}>
   `);
 };
@@ -28,6 +34,7 @@ export const RecentOrders = ({className}) => {
               <${Table.Column}>Date</${Table.Column}>
               <${Table.Column}>Customer</${Table.Column}>
               <${Table.Column} className='text-right'>Total</${Table.Column}>
+              <${Table.Column} className='w-4' />
             </{Table.Head}>
             <${Table.Body}>
               <${OrderRows} />

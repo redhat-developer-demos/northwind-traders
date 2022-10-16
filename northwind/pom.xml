@@ -50,6 +50,10 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-reactive-messaging-rabbitmq</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -70,6 +74,11 @@
               <remoteService>
                 <hostname>northwind-db</hostname>
                 <port>5432</port>
+              </remoteService>
+              <remoteService>
+                <hostname>rabbit-mq</hostname>
+                <port>5672</port>
+                <localPort>15672</localPort>
               </remoteService>
             </remoteServices>
           </remoteDevelopment>

@@ -14,3 +14,7 @@ export const api = createApi({
     getTotalRevenue: builder.query({query: () => '/revenue'})
   })
 });
+
+api.sendOrder = ({orderId}) => fetch(`/api/v1/mail/orders/${orderId}`, {
+  method: 'POST'
+});
