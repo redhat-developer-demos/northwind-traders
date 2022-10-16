@@ -9,7 +9,6 @@ import io.fabric8.kubernetes.api.model.ServiceBuilder;
 import io.fabric8.kubernetes.api.model.apps.DeploymentBuilder;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClientBuilder;
-import io.fabric8.kubernetes.client.dsl.ExecListener;
 import io.fabric8.openshift.api.model.Route;
 import io.fabric8.openshift.api.model.RouteBuilder;
 import io.fabric8.openshift.client.OpenShiftClient;
@@ -26,7 +25,7 @@ public class PrepareEnvironment {
   private static final String GROUP = "group";
   private static final String RABBIT_MQ = "rabbit-mq";
   private static final String RABBIT_MQ_MANAGEMENT = "rabbit-mq-management";
-  private static final String POSTGRESQL = "postgresql";
+  private static final String NORTHWIND_DB = "northwind-db";
   private static final String USER = "jkube";
   private static final String PASSWORD = "pa33word";
   private static final String ECLIPSECON_2022 = "eclipsecon-2022";
@@ -39,31 +38,31 @@ public class PrepareEnvironment {
   }
 
   private static void deployPostgreSql(KubernetesClient kc) {
-    kc.apps().deployments().withName(POSTGRESQL).delete();
-    kc.apps().deployments().withName(POSTGRESQL).waitUntilCondition(Objects::isNull, 10, TimeUnit.SECONDS);
-    kc.pods().withLabel(APP, POSTGRESQL).withLabel(GROUP, ECLIPSECON_2022).withGracePeriod(0L).delete();
-    kc.pods().withLabel(APP, POSTGRESQL).withLabel(GROUP, ECLIPSECON_2022)
+    kc.apps().deployments().withName(NORTHWIND_DB).delete();
+    kc.apps().deployments().withName(NORTHWIND_DB).waitUntilCondition(Objects::isNull, 10, TimeUnit.SECONDS);
+    kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, ECLIPSECON_2022).withGracePeriod(0L).delete();
+    kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, ECLIPSECON_2022)
       .waitUntilCondition(Objects::isNull, 10, TimeUnit.SECONDS);
     final var postgresDeployment = new DeploymentBuilder()
       .withNewMetadata()
-      .withName(POSTGRESQL)
-      .addToLabels(APP, POSTGRESQL)
+      .withName(NORTHWIND_DB)
+      .addToLabels(APP, NORTHWIND_DB)
       .addToLabels(GROUP, ECLIPSECON_2022)
       .endMetadata()
       .withNewSpec()
       .withReplicas(1)
       .withNewSelector()
-      .addToMatchLabels(APP, POSTGRESQL)
+      .addToMatchLabels(APP, NORTHWIND_DB)
       .addToMatchLabels(GROUP, ECLIPSECON_2022)
       .endSelector()
       .withNewTemplate()
       .withNewMetadata()
-      .addToLabels(APP, POSTGRESQL)
+      .addToLabels(APP, NORTHWIND_DB)
       .addToLabels(GROUP, ECLIPSECON_2022)
       .endMetadata()
       .withNewSpec()
       .addNewContainer()
-      .withName(POSTGRESQL)
+      .withName(NORTHWIND_DB)
       .withImage("bitnami/postgresql:14.5.0")
       .addToEnv(new EnvVar("POSTGRESQL_USERNAME", USER, null))
       .addToEnv(new EnvVar("POSTGRESQL_PASSWORD", PASSWORD, null))
@@ -78,9 +77,9 @@ public class PrepareEnvironment {
       .endTemplate()
       .endSpec()
       .build();
-    final var postgresService = service(POSTGRESQL, POSTGRESQL, 5432);
+    final var postgresService = service(NORTHWIND_DB, NORTHWIND_DB, 5432);
     Stream.of(postgresDeployment, postgresService).forEach(s -> kc.resource(s).createOrReplace());
-    var pod = kc.pods().withLabel(APP, POSTGRESQL).withLabel(GROUP, ECLIPSECON_2022)
+    var pod = kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, ECLIPSECON_2022)
       .waitUntilReady(1, TimeUnit.MINUTES);
     kc.pods().resource(pod).file("/tmp/northwind.sql").upload(Path.of("northwind.sql"));
     try {
