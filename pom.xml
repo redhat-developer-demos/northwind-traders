@@ -13,6 +13,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <quarkus.platform.version>2.13.2.Final</quarkus.platform.version>
+    <spring-boot.version>2.7.4</spring-boot.version>
     <!-- Must be manually set for the mail module (Micronaut requires to use its own parent) -->
     <jkube.version>1.10-SNAPSHOT</jkube.version>
     <jkube.enricher.jkube-project-label.group>eclipsecon-2022</jkube.enricher.jkube-project-label.group>
@@ -21,6 +22,7 @@
   <modules>
     <module>mail</module>
     <module>northwind</module>
+    <module>order-faker</module>
   </modules>
 
   <build>
