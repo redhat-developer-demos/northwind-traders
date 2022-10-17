@@ -48,7 +48,6 @@ public class OrderService {
     order.orderDetails = null;
     return order.<Order>persist()
       .chain(o -> Uni.combine().all().<OrderDetails>unis(details.stream().map(d -> {
-//            d.orderId = o.orderId;
             d.order = o;
             return d.persist();
           }).collect(Collectors.toCollection(ArrayList::new)))

@@ -1,5 +1,6 @@
 package com.marcnuri.demo.eclipsecon2022.northwind;
 
+import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.eclipse.microprofile.reactive.messaging.Message;
@@ -24,8 +25,8 @@ public class MailService {
     mailSend.send(Message.of(new Email(to, subject, body)));
   }
 
-  public void sendOrder(short orderId) {
-    orderService.findById(orderId).subscribe().with(order -> {
+  public Uni<Order> sendOrder(short orderId) {
+    return orderService.findById(orderId).map(order -> {
       final String subject = "Order " + orderId + " must be shipped";
       final String orderDetails = order.orderDetails.stream()
         // Padding must be aligned with the details section of the EMAIL_TEMPLATE
@@ -37,6 +38,7 @@ public class MailService {
         order.shipName, order.shipAddress, order.shipPostalCode, order.shipCity, order.shipCountry,
         orderDetails);
       send("northwind-warehouse@mailinator.com", subject, message);
+      return order;
     });
   }
 

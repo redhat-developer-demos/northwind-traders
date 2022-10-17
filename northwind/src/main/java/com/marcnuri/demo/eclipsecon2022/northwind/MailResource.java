@@ -1,5 +1,7 @@
 package com.marcnuri.demo.eclipsecon2022.northwind;
 
+import io.smallrye.mutiny.Uni;
+
 import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,7 +19,7 @@ public class MailResource {
 
   @POST
   @Path("/orders/{orderId}")
-  public void sendOrder(@PathParam("orderId") short orderId) {
-    mailService.sendOrder(orderId);
+  public Uni<Order> sendOrder(@PathParam("orderId") short orderId) {
+    return mailService.sendOrder(orderId);
   }
 }
