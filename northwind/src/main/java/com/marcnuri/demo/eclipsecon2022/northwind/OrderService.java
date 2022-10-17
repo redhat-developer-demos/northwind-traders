@@ -1,10 +1,13 @@
 package com.marcnuri.demo.eclipsecon2022.northwind;
 
+import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.Uni;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class OrderService {
@@ -37,5 +40,22 @@ public class OrderService {
 
   public Uni<Order.Revenue> getTotalRevenue() {
     return Order.revenue();
+  }
+
+  @ReactiveTransactional
+  public Uni<Order> newOrder(Order order) {
+    final var details = order.orderDetails;
+    order.orderDetails = null;
+    return order.<Order>persist()
+      .chain(o -> Uni.combine().all().<OrderDetails>unis(details.stream().map(d -> {
+//            d.orderId = o.orderId;
+            d.order = o;
+            return d.persist();
+          }).collect(Collectors.toCollection(ArrayList::new)))
+          .combinedWith(OrderDetails.class, list -> {
+            o.orderDetails = list;
+            return o;
+          })
+      );
   }
 }

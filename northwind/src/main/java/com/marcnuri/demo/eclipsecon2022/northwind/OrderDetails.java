@@ -16,11 +16,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "order_details")
-@JsonIdentityInfo(property = "serialId", generator = ObjectIdGenerators.PropertyGenerator.class)
 public class OrderDetails extends PanacheEntityBase implements Serializable {
-  @Id
-  @Column(name = "order_id")
-  public short orderId;
   @Id
   @Column(name = "product_id")
   public short productId;
@@ -35,7 +31,4 @@ public class OrderDetails extends PanacheEntityBase implements Serializable {
   @Column(name = "discount")
   public BigDecimal discount;
 
-  public String getSerialId() {
-    return orderId + "-" + productId;
-  }
 }

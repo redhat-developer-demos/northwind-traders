@@ -5,6 +5,7 @@ import io.smallrye.mutiny.Uni;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import java.util.List;
@@ -24,6 +25,12 @@ public class OrderResource {
   public Uni<List<Order>> list(
     @QueryParam("limit") Integer limit, @QueryParam("sort") String sort, @QueryParam("direction") Sort.Direction direction) {
     return orderService.range(limit, sort, direction);
+  }
+
+  @POST
+  @Path("/orders")
+  public Uni<Order> create(Order order) {
+    return orderService.newOrder(order);
   }
 
   @GET
