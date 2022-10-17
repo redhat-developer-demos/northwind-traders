@@ -1,14 +1,27 @@
-TITLE
-=====
+EclipseCon 2022
+===============
+
+## Deploy the application
+
+```shell
+cd prod
+jbang PrepareEnvironment.java
+cd ..
+mvn clean package oc:build oc:resource oc:apply
+```
 
 ## Services
 
 ### Northwind traders
 
+Module: [northwind](./northwind)
+
 Web application for the renowned Northwind traders database.
 
 
 ### Mail
+
+Module: [mail](./mail)
 
 Sends email notifications to Mailinator.
 
