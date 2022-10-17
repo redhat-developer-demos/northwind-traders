@@ -1,6 +1,8 @@
 EclipseCon 2022
 ===============
 
+![A diagram of the project's architecture](./diagram.png)
+
 ## Deploy the application
 
 ```shell
