@@ -23,5 +23,4 @@ mail:
   queue:
     send: main.send.dev
   from: dev@example.com
-  to: jkube@mailinator.com
 

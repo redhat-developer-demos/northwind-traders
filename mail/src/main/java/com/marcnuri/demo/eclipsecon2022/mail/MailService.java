@@ -11,8 +11,6 @@ public class MailService {
 
   @Value("${mail.from}")
   protected String from;
-  @Value("${mail.to}")
-  protected String to;
   private final EmailSender<?, ?> emailSender;
 
   @Inject
@@ -20,11 +18,13 @@ public class MailService {
     this.emailSender = emailSender;
   }
 
-  public void sendMail(String message) {
+  public void sendMail(Message message) {
     emailSender.send(Email.builder()
         .from(from)
-        .to(to)
-        .subject("New Entry processed")
-        .body(message));
+        .to(message.to())
+        .subject(message.subject())
+        .body(
+          "<html><body><pre>" + message.message() + "</pre></body></html>",
+          message.message()));
   }
 }

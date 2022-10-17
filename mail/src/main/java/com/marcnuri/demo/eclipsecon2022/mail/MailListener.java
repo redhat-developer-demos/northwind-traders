@@ -13,7 +13,7 @@ public class MailListener {
   }
 
   @Queue("${mail.queue.send}")
-  public void sendMail(String message) {
+  public void sendMail(Message message) {
     mailService.sendMail(message);
   }
 }
