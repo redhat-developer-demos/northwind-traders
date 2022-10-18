@@ -22,7 +22,7 @@ public class OrderService {
     // Using two queries to prevent:
     //   HR000104: firstResult/maxResults specified with collection fetch; applying in memory!
     final Sort orderSort = Sort.by("o." + sort, direction)
-      .and("o.orderId", Sort.Direction.Descending);
+      .and("o.orderId", direction);
     return Order
       .listIds(orderSort)
       .range(0, limit - 1)

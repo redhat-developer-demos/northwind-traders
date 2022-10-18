@@ -9,7 +9,7 @@ export const api = createApi({
   }),
   tagTypes: [TAG],
   endpoints: builder => ({
-    getRecentOrders: builder.query({query: () => '/orders?sort=orderDate&order=Descending&limit=10'}),
+    getRecentOrders: builder.query({query: () => '/orders?sort=orderDate&direction=Descending&limit=10'}),
     getPendingShipmentCount: builder.query({query: () => '/orders/count?status=pending-shipment'}),
     getTotalRevenue: builder.query({query: () => '/revenue'})
   })
