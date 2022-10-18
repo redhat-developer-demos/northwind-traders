@@ -25,7 +25,7 @@ public class OrderService {
       .and("o.orderId", Sort.Direction.Descending);
     return Order
       .listIds(orderSort)
-      .range(0, limit)
+      .range(0, limit - 1)
       .list()
       .chain(orderIds -> Order.findByIds(orderIds, orderSort));
   }
