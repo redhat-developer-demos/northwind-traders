@@ -1,0 +1,9 @@
+metadata:
+  annotations:
+    app.openshift.io/connects-to: northwind
+  labels:
+    app.kubernetes.io/part-of: ${jkube.enricher.jkube-project-label.group}
+    app.openshift.io/runtime: spring-boot
+# TODO - Raise an issue at JKube, since this should not be required
+spec:
+  template:

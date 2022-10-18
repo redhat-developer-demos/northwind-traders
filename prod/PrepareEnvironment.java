@@ -23,6 +23,8 @@ public class PrepareEnvironment {
 
   private static final String APP = "app";
   private static final String GROUP = "group";
+  private static final String PART_OF = "app.kubernetes.io/part-of";
+  private static final String RUNTIME = "app.openshift.io/runtime";
   private static final String RABBIT_MQ = "rabbit-mq";
   private static final String RABBIT_MQ_MANAGEMENT = "rabbit-mq-management";
   private static final String NORTHWIND_DB = "northwind-db";
@@ -48,6 +50,8 @@ public class PrepareEnvironment {
       .withName(NORTHWIND_DB)
       .addToLabels(APP, NORTHWIND_DB)
       .addToLabels(GROUP, ECLIPSECON_2022)
+      .addToLabels(PART_OF, ECLIPSECON_2022)
+      .addToLabels(RUNTIME, "postgresql")
       .endMetadata()
       .withNewSpec()
       .withReplicas(1)
@@ -107,6 +111,8 @@ public class PrepareEnvironment {
       .withName(RABBIT_MQ)
       .addToLabels(APP, RABBIT_MQ)
       .addToLabels(GROUP, ECLIPSECON_2022)
+      .addToLabels(PART_OF, ECLIPSECON_2022)
+      .addToLabels(RUNTIME, "rabbitmq")
       .endMetadata()
       .withNewSpec()
       .withReplicas(1)
@@ -146,6 +152,7 @@ public class PrepareEnvironment {
       .withName(name)
       .addToLabels(APP, app)
       .addToLabels(GROUP, ECLIPSECON_2022)
+      .addToLabels(PART_OF, ECLIPSECON_2022)
       .endMetadata()
       .withNewSpec()
       .withNewTo()
@@ -165,6 +172,7 @@ public class PrepareEnvironment {
       .withName(name)
       .addToLabels(APP, app)
       .addToLabels(GROUP, ECLIPSECON_2022)
+      .addToLabels(PART_OF, ECLIPSECON_2022)
       .endMetadata()
       .withNewSpec()
       .addToSelector(APP, app)

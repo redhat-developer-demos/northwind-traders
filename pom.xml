@@ -16,7 +16,9 @@
     <spring-boot.version>2.7.4</spring-boot.version>
     <!-- Must be manually set for the mail module (Micronaut requires to use its own parent) -->
     <jkube.version>1.10-SNAPSHOT</jkube.version>
+    <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
     <jkube.enricher.jkube-project-label.group>eclipsecon-2022</jkube.enricher.jkube-project-label.group>
+    <!-- // -->
   </properties>
 
   <modules>
