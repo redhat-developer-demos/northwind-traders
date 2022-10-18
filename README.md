@@ -31,18 +31,26 @@ This application is a port of a previous iteration used for Barcelona JUG presen
 
 https://www.mailinator.com/v4/public/inboxes.jsp?to=jkube
 
+### Order Faker
+
+Module: [order-faker](./order-faker)
+
+Fake orders and send them to the Northwind application. A new order will be sent every ~6 seconds.
+
+This application could represent a mobile-application sending requests to the Northwind REST API. 
 
 ## Contributing
 
-## Northwind
+### Northwind
 
-### Building the Frontend
+#### Building the Frontend
 
-The frontend uses ES Modules in the browser, so it doesn't need any transpilation process.
+The frontend uses ES Modules in the browser, so it doesn't need a transpilation process.
 However, the npm modules/libraries it relies on need to be packaged into a single file so that they can be consumed.
 You can perform this step by running the following command:
 ```shell
 cd northwind/tools
 node create-bundle.js
 ```
+The generated files should be persisted in the VCS, or generated before the application is executed/packaged.
 
