@@ -67,7 +67,6 @@
               <localService>
                 <serviceName>northwind</serviceName>
                 <port>8080</port>
-                <type>NodePort</type>
               </localService>
             </localServices>
             <remoteServices>
