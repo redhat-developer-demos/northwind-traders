@@ -5,6 +5,15 @@ EclipseCon 2022
 
 ## Deploy the application
 
+To easily deploy the required services, this project provides a JBang script that will deploy the application to OpenShift.
+
+If you're running from an SH compatible terminal, you can run the following command:
+```shell
+./deploy-to-sandbox.sh
+```
+
+From any other platform, you can run the following commands:
+
 ```shell
 cd prod
 jbang PrepareEnvironment.java
