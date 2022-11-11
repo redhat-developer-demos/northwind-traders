@@ -9,7 +9,7 @@ To easily deploy the required services, this project provides a JBang script tha
 
 If you're running from an SH compatible terminal, you can run the following command:
 ```shell
-./deploy-to-sandbox.sh
+./deploy-to-openshift.sh
 ```
 
 From any other platform, you can run the following commands:
