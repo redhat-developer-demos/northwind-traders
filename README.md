@@ -68,11 +68,15 @@ The generated files should be persisted in the VCS, or generated before the appl
 
 ## <span id="remote-dev-walk-through">Remote Dev demo walk-through</span>
 
-### Requirements
+### Prerequisites
+To complete this guide, you need:
 
+- Roughly 10 minutes
+- An IDE
 - An Openshift cluster. The Red Hat developer sandbox is good enough to use. See https://developers.redhat.com/developer-sandbox
-- [Jbang](https://www.jbang.dev/) is required to deploy the RabbitMQ and PostgreSQL services
-- Java 17
+- [Jbang](https://www.jbang.dev/) to deploy the RabbitMQ and PostgreSQL services
+- JDK 17+
+- Apache Maven 3.6.3 or higher
 
 ### Connect to the cluster
 Once the Openshift cluster is up and running, you can connect your local machine to the remote cluster using the command provided in the Openshift Developer Console: Click on the question mark icon, `Command line tools`, `Copy login command`. 
