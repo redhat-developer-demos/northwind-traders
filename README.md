@@ -5,6 +5,9 @@ EclipseCon 2022
 
 ## Deploy the application
 
+Please jump to the [walk-through](#remote-dev-walk-through) section for a step-by-step guid on how to test-drive the
+application. In case you're only interested in deploying the application, please follow the instructions below.
+
 To easily deploy the required services, this project provides a JBang script that will deploy the application to OpenShift.
 
 If you're running from an SH compatible terminal, you can run the following command:
@@ -63,7 +66,7 @@ node create-bundle.js
 ```
 The generated files should be persisted in the VCS, or generated before the application is executed/packaged.
 
-## Remote Dev demo walk through
+## <span id="remote-dev-walk-through">Remote Dev demo walk-through</span>
 
 ### Requirements
 
@@ -148,12 +151,12 @@ Access/refresh the frontend. It should work now as you have not done anything. Y
 Open the file [MailService.java](./northwind/src/main/java/com/marcnuri/demo/eclipsecon2022/northwind/MailService.java) and the `sendOrder` method, let's replace the line
 
 ```java
-      final String subject = "Order " + orderId + " must be shipped";
+  final String subject = "Order " + orderId + " must be shipped";
 ```
 
 with the translation in French
 ```java
-      final String subject = "La commande " + orderId + " doit être expédiée";
+  final String subject = "La commande " + orderId + " doit être expédiée";
 ```
 
 Just go back the the Northwind frontend and send an email. Back to mailinator, the subject of the last email should be updated with the translation.
