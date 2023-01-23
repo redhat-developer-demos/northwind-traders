@@ -41,7 +41,7 @@ Sends email notifications to Mailinator.
 
 This application is a port of a previous iteration used for Barcelona JUG presentation in 2020.
 
-https://www.mailinator.com/v4/public/inboxes.jsp?to=jkube
+https://www.mailinator.com/v4/public/inboxes.jsp?to=northwind-warehouse
 
 ### Order Faker
 
