@@ -2,7 +2,7 @@
 
 set -e
 
-JAVA_VERSION=$((java -version) 2>&1 | sed -z 's/\n/ /g')
+JAVA_VERSION=$((java -version) 2>&1 | tr -d '\n')
 
 if [[ $JAVA_VERSION =~ 'version "17.0' ]]; then
    echo "Java 17 detected"
