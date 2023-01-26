@@ -22,6 +22,24 @@
         <artifactId>openshift-maven-plugin</artifactId>
         <version>${jkube.version}</version>
         <configuration>
+          <resources>
+            <annotations>
+              <deployment>
+                <property>
+                  <name>app.openshift.io/connects-to</name>
+                  <value>northwind</value>
+                </property>
+              </deployment>
+            </annotations>
+            <labels>
+              <deployment>
+                <property>
+                  <name>app.kubernetes.io/part-of</name>
+                  <value>${jkube.enricher.jkube-project-label.group}</value>
+                </property>
+              </deployment>
+            </labels>
+          </resources>
           <remoteDevelopment>
             <remoteServices>
               <remoteService>
