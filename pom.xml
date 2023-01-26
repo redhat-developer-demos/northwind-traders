@@ -25,6 +25,7 @@
     <module>mail</module>
     <module>northwind</module>
     <module>order-faker</module>
+    <module>react-frontend</module>
   </modules>
 
   <build>
