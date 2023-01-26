@@ -1,12 +1,11 @@
-EclipseCon 2022
-===============
+Eclipse JKube Remote Development Playground
+===========================================
 
 ![A diagram of the project's architecture](./diagram.png)
 
 ## Deploy the application
 
-Please jump to the [walk-through](#remote-dev-walk-through) section for a step-by-step guid on how to test-drive the
-application. In case you're only interested in deploying the application, please follow the instructions below.
+Please jump to the [walk-through](#remote-dev-walk-through) section for a step-by-step guide on how to test-drive the application. _In case you're only interested in deploying the application, please follow the instructions below._
 
 To easily deploy the required services, this project provides a JBang script that will deploy the application to OpenShift.
 
@@ -49,7 +48,15 @@ Module: [order-faker](./order-faker)
 
 Fake orders and send them to the Northwind application. A new order will be sent every ~6 seconds.
 
-This application could represent a mobile-application sending requests to the Northwind REST API. 
+This application could represent a mobile-application sending requests to the Northwind REST API.
+
+### React Frontend
+
+Module: [react-frontend](./react-frontend)
+
+A React frontend skeleton JavaScript application to be able to interact with the Northwind service.
+
+The application is 100% JavaScript. However, there is a pom.xml containing Eclipse JKube configuration to be able to deploy the application to OpenShift and to run the remote-dev goal.
 
 ## Contributing
 
