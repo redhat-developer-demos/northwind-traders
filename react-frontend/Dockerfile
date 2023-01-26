@@ -9,7 +9,7 @@ FROM node:18-alpine as run
 WORKDIR /app
 COPY --from=build /app/build /app/build
 COPY --from=build /app/index.js /app/index.js
-RUN npm install -g express
+RUN npm install -g express express-http-proxy
 ENV NODE_PATH /usr/local/lib/node_modules
 EXPOSE 8080
 CMD ["node", "index.js"]
