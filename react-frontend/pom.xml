@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.marcnuri.demo.eclipsecon2022</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>react-frontend</artifactId>
+
+  <properties>
+    <jkube.build.strategy>docker</jkube.build.strategy>
+    <jkube.build.switchToDeployment>false</jkube.build.switchToDeployment>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.jkube</groupId>
+        <artifactId>openshift-maven-plugin</artifactId>
+        <version>${jkube.version}</version>
+        <configuration>
+          <remoteDevelopment>
+            <remoteServices>
+              <remoteService>
+                <hostname>northwind</hostname>
+                <port>8080</port>
+                <localPort>28080</localPort>
+              </remoteService>
+            </remoteServices>
+          </remoteDevelopment>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
