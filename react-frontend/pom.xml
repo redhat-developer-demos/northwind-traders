@@ -41,6 +41,12 @@
             </labels>
           </resources>
           <remoteDevelopment>
+            <localServices>
+              <localService>
+                <port>8080</port>
+                <serviceName>react-frontend</serviceName>
+              </localService>
+            </localServices>
             <remoteServices>
               <remoteService>
                 <hostname>northwind</hostname>
