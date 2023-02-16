@@ -22,7 +22,7 @@
     <micronaut.runtime>netty</micronaut.runtime>
     <micronaut.test.resources.enabled>true</micronaut.test.resources.enabled>
     <exec.mainClass>com.marcnuri.demo.eclipsecon2022.mail.Application</exec.mainClass>
-    <jkube.version>1.10.1</jkube.version>
+    <jkube.version>1.11.0</jkube.version>
     <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
     <jkube.enricher.jkube-project-label.group>eclipsecon-2022</jkube.enricher.jkube-project-label.group>
   </properties>
