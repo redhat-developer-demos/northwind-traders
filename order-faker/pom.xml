@@ -12,6 +12,7 @@
 
   <properties>
     <spring-boot.run.profiles>dev</spring-boot.run.profiles>
+    <jkube.openshift.generateRoute>false</jkube.openshift.generateRoute>
   </properties>
 
   <dependencyManagement>
