@@ -24,7 +24,7 @@
     <exec.mainClass>com.marcnuri.demo.eclipsecon2022.mail.Application</exec.mainClass>
     <jkube.version>1.11.0</jkube.version>
     <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-    <jkube.enricher.jkube-project-label.group>eclipsecon-2022</jkube.enricher.jkube-project-label.group>
+    <jkube.enricher.jkube-project-label.group>northwind-industries</jkube.enricher.jkube-project-label.group>
   </properties>
 
   <repositories>

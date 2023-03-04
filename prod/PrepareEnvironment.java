@@ -38,7 +38,7 @@ public class PrepareEnvironment {
   private static final String NORTHWIND_DB = "northwind-db";
   private static final String USER = "jkube";
   private static final String PASSWORD = "pa33word";
-  private static final String ECLIPSECON_2022 = "eclipsecon-2022";
+  private static final String NORTHIWND_GROUP = "northwind-industries";
 
   public static void main(String... args) {
     try (var kc = new KubernetesClientBuilder().build()) {
@@ -50,8 +50,8 @@ public class PrepareEnvironment {
   private static void deployPostgreSql(KubernetesClient kc) {
     kc.apps().deployments().withName(NORTHWIND_DB).withGracePeriod(0L).delete();
     kc.apps().deployments().withName(NORTHWIND_DB).waitUntilCondition(Objects::isNull, 10, TimeUnit.SECONDS);
-    kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, ECLIPSECON_2022).withGracePeriod(0L).delete();
-    kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, ECLIPSECON_2022)
+    kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, NORTHIWND_GROUP).withGracePeriod(0L).delete();
+    kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, NORTHIWND_GROUP)
       .waitUntilCondition(Objects::isNull, 10, TimeUnit.SECONDS);
     kc.persistentVolumeClaims().withName(NORTHWIND_DB).withGracePeriod(0L).delete();
     kc.persistentVolumeClaims().withName(NORTHWIND_DB).waitUntilCondition(Objects::isNull, 10, TimeUnit.SECONDS);
@@ -59,8 +59,8 @@ public class PrepareEnvironment {
       .withMetadata(new ObjectMetaBuilder()
         .withName(NORTHWIND_DB)
         .addToLabels(APP, NORTHWIND_DB)
-        .addToLabels(GROUP, ECLIPSECON_2022)
-        .addToLabels(PART_OF, ECLIPSECON_2022)
+        .addToLabels(GROUP, NORTHIWND_GROUP)
+        .addToLabels(PART_OF, NORTHIWND_GROUP)
         .build())
       .withNewSpec()
       .withAccessModes("ReadWriteOnce")
@@ -74,8 +74,8 @@ public class PrepareEnvironment {
       .withMetadata(new ObjectMetaBuilder()
         .withName(NORTHWIND_DB)
         .addToLabels(APP, NORTHWIND_DB)
-        .addToLabels(GROUP, ECLIPSECON_2022)
-        .addToLabels(PART_OF, ECLIPSECON_2022)
+        .addToLabels(GROUP, NORTHIWND_GROUP)
+        .addToLabels(PART_OF, NORTHIWND_GROUP)
         .addToLabels(RUNTIME, "postgresql")
         .build()
       )
@@ -83,12 +83,12 @@ public class PrepareEnvironment {
         .withReplicas(1)
         .withNewSelector()
         .addToMatchLabels(APP, NORTHWIND_DB)
-        .addToMatchLabels(GROUP, ECLIPSECON_2022)
+        .addToMatchLabels(GROUP, NORTHIWND_GROUP)
         .endSelector()
         .withNewTemplate()
         .withNewMetadata()
         .addToLabels(APP, NORTHWIND_DB)
-        .addToLabels(GROUP, ECLIPSECON_2022)
+        .addToLabels(GROUP, NORTHIWND_GROUP)
         .endMetadata()
         .withNewSpec()
         .addToContainers(new ContainerBuilder()
@@ -119,7 +119,7 @@ public class PrepareEnvironment {
       .build();
     final var postgresService = service(NORTHWIND_DB, NORTHWIND_DB, 5432);
     Stream.of(postgresDeployment, postgresService).forEach(s -> kc.resource(s).createOrReplace());
-    var pod = kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, ECLIPSECON_2022)
+    var pod = kc.pods().withLabel(APP, NORTHWIND_DB).withLabel(GROUP, NORTHIWND_GROUP)
       .waitUntilReady(1, TimeUnit.MINUTES);
     kc.pods().resource(pod).file("/tmp/northwind.sql").upload(Path.of("northwind.sql"));
     try {
@@ -146,20 +146,20 @@ public class PrepareEnvironment {
       .withMetadata(new ObjectMetaBuilder()
         .withName(RABBIT_MQ)
         .addToLabels(APP, RABBIT_MQ)
-        .addToLabels(GROUP, ECLIPSECON_2022)
-        .addToLabels(PART_OF, ECLIPSECON_2022)
+        .addToLabels(GROUP, NORTHIWND_GROUP)
+        .addToLabels(PART_OF, NORTHIWND_GROUP)
         .addToLabels(RUNTIME, "rabbitmq")
         .build())
       .withSpec(new DeploymentSpecBuilder()
         .withReplicas(1)
         .withNewSelector()
         .addToMatchLabels(APP, RABBIT_MQ)
-        .addToMatchLabels(GROUP, ECLIPSECON_2022)
+        .addToMatchLabels(GROUP, NORTHIWND_GROUP)
         .endSelector()
         .withNewTemplate()
         .withNewMetadata()
         .addToLabels(APP, RABBIT_MQ)
-        .addToLabels(GROUP, ECLIPSECON_2022)
+        .addToLabels(GROUP, NORTHIWND_GROUP)
         .endMetadata()
         .withNewSpec()
         .addToContainers(new ContainerBuilder()
@@ -187,8 +187,8 @@ public class PrepareEnvironment {
       .withMetadata(new ObjectMetaBuilder()
         .withName(name)
         .addToLabels(APP, app)
-        .addToLabels(GROUP, ECLIPSECON_2022)
-        .addToLabels(PART_OF, ECLIPSECON_2022)
+        .addToLabels(GROUP, NORTHIWND_GROUP)
+        .addToLabels(PART_OF, NORTHIWND_GROUP)
         .build())
       .withSpec(new RouteSpecBuilder()
         .withNewTo()
@@ -207,12 +207,12 @@ public class PrepareEnvironment {
       .withMetadata(new ObjectMetaBuilder()
         .withName(name)
         .addToLabels(APP, app)
-        .addToLabels(GROUP, ECLIPSECON_2022)
-        .addToLabels(PART_OF, ECLIPSECON_2022)
+        .addToLabels(GROUP, NORTHIWND_GROUP)
+        .addToLabels(PART_OF, NORTHIWND_GROUP)
         .build())
       .withSpec(new ServiceSpecBuilder()
         .addToSelector(APP, app)
-        .addToSelector(GROUP, ECLIPSECON_2022)
+        .addToSelector(GROUP, NORTHIWND_GROUP)
         .addNewPort().withPort(port).endPort()
         .build())
       .build();
