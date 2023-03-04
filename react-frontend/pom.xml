@@ -43,7 +43,7 @@
           <remoteDevelopment>
             <localServices>
               <localService>
-                <port>8080</port>
+                <port>3000</port>
                 <serviceName>react-frontend</serviceName>
               </localService>
             </localServices>
