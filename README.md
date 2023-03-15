@@ -1,13 +1,13 @@
-[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://workspaces.openshift.com#https://github.com/marcnuri-demo/jkube-remote-dev/)
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://workspaces.openshift.com#https://github.com/redhat-developer-demos/northwind-traders/)
 
-Eclipse JKube Remote Development Playground
-===========================================
+Northwind Traders
+=================
 
 ![A diagram of the project's architecture](./diagram.png)
 
 ## Deploy the application
 
-Please jump to the [walk-through](#remote-dev-walk-through) section for a step-by-step guide on how to test-drive the application. _In case you're only interested in deploying the application, please follow the instructions below._
+Please jump to the [walk-through](#id-remote-dev-walk-through) section for a step-by-step guide on how to test-drive the application. _In case you're only interested in deploying the application, please follow the instructions below._
 
 To easily deploy the required services, this project provides a JBang script that will deploy the application to OpenShift.
 
@@ -75,7 +75,8 @@ node create-bundle.js
 ```
 The generated files should be persisted in the VCS, or generated before the application is executed/packaged.
 
-## <span id="remote-dev-walk-through">Remote Dev demo walk-through</span>
+<a name="id-remote-dev-walk-through"></a>
+## Remote Dev demo walk-through
 
 ### Prerequisites
 To complete this guide, you need:
@@ -127,7 +128,7 @@ Check that you have receive a new email in https://www.mailinator.com/v4/public/
 ![Mailinator 1](./assets/mailinator-1.png)
 
 ### Remote dev
-Let's say we want to modify the subject of the mail. This is done in [MailService.java](./northwind/src/main/java/com/marcnuri/demo/eclipsecon2022/northwind/MailService.java) in the Northwind service.
+Let's say we want to modify the subject of the mail. This is done in [MailService.java](./northwind/src/main/java/com/redhat/developers/northwind/dashboard/MailService.java) in the Northwind service.
 
 It is hard to test your modifications locally if you don't have all the services available. Developers could test in the dev remote cluster but this way of doing involves rebuilding the container and redeploying it. This is not very handy.
 
@@ -161,7 +162,7 @@ Access/refresh the frontend. It should work now as you have not done anything. Y
 
 #### Live modification
 
-Open the file [MailService.java](./northwind/src/main/java/com/marcnuri/demo/eclipsecon2022/northwind/MailService.java) and the `sendOrder` method, let's replace the line
+Open the file [MailService.java](./northwind/src/main/java/com/redhat/developers/northwind/dashboard/MailService.java) and the `sendOrder` method, let's replace the line
 
 ```java
   final String subject = "Order " + orderId + " must be shipped";
