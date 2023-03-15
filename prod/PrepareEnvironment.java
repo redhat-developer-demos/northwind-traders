@@ -38,7 +38,7 @@ public class PrepareEnvironment {
   private static final String NORTHWIND_DB = "northwind-db";
   private static final String USER = "jkube";
   private static final String PASSWORD = "pa33word";
-  private static final String NORTHIWND_GROUP = "northwind-industries";
+  private static final String NORTHIWND_GROUP = "northwind-traders";
 
   public static void main(String... args) {
     try (var kc = new KubernetesClientBuilder().build()) {
