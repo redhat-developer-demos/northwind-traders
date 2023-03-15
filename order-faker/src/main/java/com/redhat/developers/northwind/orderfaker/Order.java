@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.orderfaker;
+package com.redhat.developers.northwind.orderfaker;
 
 import java.math.BigDecimal;
 import java.util.Date;

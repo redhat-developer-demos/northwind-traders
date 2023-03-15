@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.mail;
+package com.redhat.developers.northwind.mail;
 
 import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;

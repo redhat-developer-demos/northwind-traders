@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.northwind;
+package com.redhat.developers.northwind.dashboard;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;

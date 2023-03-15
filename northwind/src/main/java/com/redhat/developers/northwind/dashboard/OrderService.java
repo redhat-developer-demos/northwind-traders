@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.northwind;
+package com.redhat.developers.northwind.dashboard;
 
 import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
 import io.quarkus.panache.common.Sort;

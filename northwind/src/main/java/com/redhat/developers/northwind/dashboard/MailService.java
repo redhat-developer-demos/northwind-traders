@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.northwind;
+package com.redhat.developers.northwind.dashboard;
 
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.reactive.messaging.Channel;

@@ -1,8 +1,6 @@
-package com.marcnuri.demo.eclipsecon2022.northwind;
+package com.redhat.developers.northwind.dashboard;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 
 import javax.persistence.Column;
