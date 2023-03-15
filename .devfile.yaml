@@ -52,7 +52,7 @@ commands:
         oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
         ./deploy-to-openshift.sh
       workingDir: ${PROJECT_SOURCE}
-  - id: quarkus-dev
+  - id: show-cluster-url
     exec:
       label: "3. Show Cluster URL"
       component: tools
@@ -64,15 +64,17 @@ commands:
       label: "4. Start Development Mode"
       component: tools
       commandLine: |
-        source /home/user/.bashrc && mvn quarkus:dev
-      workingDir: ${PROJECT_SOURCE}/northwind
+        source /home/user/.bashrc && mvn -pl northwind quarkus:dev
+      workingDir: ${PROJECT_SOURCE}
   - id: run-dev-env
     exec:
       label: "5. JKube Development Session"
       component: tools
       commandLine: |
-        source /home/user/.bashrc && mvn oc:remote-dev
-      workingDir: ${PROJECT_SOURCE}/northwind
+        source /home/user/.bashrc && \
+        oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
+        mvn -pl northwind oc:remote-dev
+      workingDir: ${PROJECT_SOURCE}
 events:
   postStart:
     - package
