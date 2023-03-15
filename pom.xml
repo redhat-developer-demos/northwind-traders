@@ -17,7 +17,7 @@
     <!-- Must be manually set for the mail module (Micronaut requires to use its own parent) -->
     <jkube.version>1.11.0</jkube.version>
     <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-    <jkube.enricher.jkube-project-label.group>northwind-industries</jkube.enricher.jkube-project-label.group>
+    <jkube.enricher.jkube-project-label.group>northwind-traders</jkube.enricher.jkube-project-label.group>
     <!-- // -->
   </properties>
 
