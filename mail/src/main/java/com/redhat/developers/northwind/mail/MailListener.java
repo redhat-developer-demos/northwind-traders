@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.mail;
+package com.redhat.developers.northwind.mail;
 
 import io.micronaut.rabbitmq.annotation.Queue;
 import io.micronaut.rabbitmq.annotation.RabbitListener;

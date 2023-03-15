@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.mail;
+package com.redhat.developers.northwind.mail;
 
 public record Message (String to, String subject, String message) {
 }

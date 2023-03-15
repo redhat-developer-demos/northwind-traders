@@ -1,4 +1,4 @@
-package com.marcnuri.demo.eclipsecon2022.orderfaker;
+package com.redhat.developers.northwind.orderfaker;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
