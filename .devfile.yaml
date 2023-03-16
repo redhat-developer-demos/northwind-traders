@@ -77,7 +77,7 @@ commands:
       workingDir: ${PROJECT_SOURCE}
   - id: cleanup
     exec:
-      label: "6. Cleanup"
+      label: "6. Clean Up"
       component: tools
       commandLine: |
         source /home/user/.bashrc && \
