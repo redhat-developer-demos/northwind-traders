@@ -75,6 +75,15 @@ commands:
         oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
         mvn -pl northwind oc:remote-dev
       workingDir: ${PROJECT_SOURCE}
+  - id: cleanup
+    exec:
+      label: "6. Cleanup"
+      component: tools
+      commandLine: |
+        source /home/user/.bashrc && \
+        oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
+        oc whoami --show-console
+      workingDir: ${PROJECT_SOURCE}
 events:
   postStart:
     - package
