@@ -75,6 +75,13 @@ commands:
         oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
         mvn -pl northwind oc:remote-dev
       workingDir: ${PROJECT_SOURCE}
+  - id: cleanup
+    exec:
+      label: "6. Clean Up"
+      component: tools
+      commandLine: |
+        oc delete all --selector 'group in (northwind-traders,northwind-industries)'
+      workingDir: ${PROJECT_SOURCE}
 events:
   postStart:
     - package
