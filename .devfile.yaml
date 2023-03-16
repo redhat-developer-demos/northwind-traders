@@ -82,7 +82,7 @@ commands:
       commandLine: |
         source /home/user/.bashrc && \
         oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
-        oc whoami --show-console
+        oc delete all --selector app.kubernetes.io/part-of=northwind-traders
       workingDir: ${PROJECT_SOURCE}
 events:
   postStart:
