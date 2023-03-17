@@ -80,9 +80,7 @@ commands:
       label: "6. Clean Up"
       component: tools
       commandLine: |
-        source /home/user/.bashrc && \
-        oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
-        oc delete all --selector app.kubernetes.io/part-of=northwind-traders
+        oc delete all --selector 'group in (northwind-traders,northwind-industries)'
       workingDir: ${PROJECT_SOURCE}
 events:
   postStart:
