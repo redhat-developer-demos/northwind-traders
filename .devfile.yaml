@@ -6,7 +6,7 @@ attributes:
 components:
   - name: tools
     container:
-      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      image: quay.io/devfile/universal-developer-image:ubi8-577bf6e
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
@@ -90,3 +90,6 @@ commands:
       commandLine: |
         oc delete all --selector 'group in (northwind-traders,northwind-industries)'
       workingDir: ${PROJECT_SOURCE}
+events:
+  postStart:
+    - package
