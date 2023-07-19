@@ -39,7 +39,7 @@ components:
       mountSources: true
   - name: m2
     volume:
-      size: 1G
+      size: 3G
 commands:
   - id: package
     exec:
