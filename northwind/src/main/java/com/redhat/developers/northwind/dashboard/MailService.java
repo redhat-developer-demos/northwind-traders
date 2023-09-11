@@ -1,5 +1,6 @@
 package com.redhat.developers.northwind.dashboard;
 
+import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
@@ -25,6 +26,7 @@ public class MailService {
     mailSend.send(Message.of(new Email(to, subject, body)));
   }
 
+  @WithSession
   public Uni<Order> sendOrder(short orderId) {
     return orderService.findById(orderId).map(order -> {
       final String subject = "Order " + orderId + " must be shipped";
