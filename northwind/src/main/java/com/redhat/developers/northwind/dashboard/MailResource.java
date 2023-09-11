@@ -2,10 +2,10 @@ package com.redhat.developers.northwind.dashboard;
 
 import io.smallrye.mutiny.Uni;
 
-import javax.inject.Inject;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 
 @Path("/api/v1/mail")
 public class MailResource {
