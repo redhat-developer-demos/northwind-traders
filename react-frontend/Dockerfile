@@ -1,16 +1,16 @@
-FROM node:18-alpine as build
-WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY maven/ ./
+FROM registry.access.redhat.com/ubi9/nodejs-18:latest as build
+WORKDIR /opt/app-root/src
+ENV PATH /opt/app-root/src/node_modules/.bin:$PATH
+COPY --chown=1001 maven/ ./
 RUN npm install                   && \
     npm run build
 
-FROM node:18-alpine as run
-WORKDIR /app
-COPY --from=build /app/build /app/build
-COPY --from=build /app/index.js /app/index.js
+FROM registry.access.redhat.com/ubi9/nodejs-18:latest as run
+WORKDIR /opt/app-root/src
+COPY --chown=1001 --from=build /opt/app-root/src/build /opt/app-root/src/build
+COPY --chown=1001 --from=build /opt/app-root/src/index.js /opt/app-root/src/index.js
 RUN npm install -g express express-http-proxy
-ENV NODE_PATH /usr/local/lib/node_modules
+ENV NODE_PATH /opt/app-root/src/.npm-global/lib/node_modules
 EXPOSE 8080
 CMD ["node", "index.js"]
 
