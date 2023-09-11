@@ -1,7 +1,7 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 17+
-//DEPS io.fabric8:openshift-client:6.5.0
-//DEPS org.apache.commons:commons-compress:1.22
+//DEPS io.fabric8:openshift-client:6.8.1
+//DEPS org.apache.commons:commons-compress:1.24.0
 
 import io.fabric8.kubernetes.api.model.ContainerBuilder;
 import io.fabric8.kubernetes.api.model.EnvVar;
