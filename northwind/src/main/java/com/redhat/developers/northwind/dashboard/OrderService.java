@@ -1,10 +1,10 @@
 package com.redhat.developers.northwind.dashboard;
 
-import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
+import io.quarkus.hibernate.reactive.panache.common.WithTransaction;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.Uni;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,7 +42,7 @@ public class OrderService {
     return Order.revenue();
   }
 
-  @ReactiveTransactional
+  @WithTransaction
   public Uni<Order> newOrder(Order order) {
     final var details = order.orderDetails;
     order.orderDetails = null;
