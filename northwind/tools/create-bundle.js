@@ -24,12 +24,12 @@ fs.mkdirSync(buildDir);
 fs.writeFileSync(packageJson, JSON.stringify({
   name: 'temp-package',
   dependencies: {
-    '@reduxjs/toolkit': '1.8.6',
+    '@reduxjs/toolkit': '1.9.5',
     htm: '3.1.1',
     react: '18.2.0',
     'react-dom': '18.2.0',
-    'react-redux': '8.0.4',
-    webpack: '5.74.0'
+    'react-redux': '8.1.2',
+    webpack: '5.88.2'
   }
 }));
 
