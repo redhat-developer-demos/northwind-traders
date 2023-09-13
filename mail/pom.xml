@@ -22,7 +22,7 @@
     <micronaut.runtime>netty</micronaut.runtime>
     <micronaut.test.resources.enabled>true</micronaut.test.resources.enabled>
     <exec.mainClass>com.redhat.developers.northwind.mail.Application</exec.mainClass>
-    <jkube.version>1.13.1</jkube.version>
+    <jkube.version>1.14.0</jkube.version>
     <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
     <jkube.openshift.generateRoute>false</jkube.openshift.generateRoute>
     <jkube.enricher.jkube-project-label.group>northwind-traders</jkube.enricher.jkube-project-label.group>
