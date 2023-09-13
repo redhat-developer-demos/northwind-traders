@@ -15,7 +15,7 @@
     <quarkus.platform.version>3.3.2</quarkus.platform.version>
     <spring-boot.version>3.1.3</spring-boot.version>
     <!-- Must be manually set for the mail module (Micronaut requires to use its own parent) -->
-    <jkube.version>1.13.1</jkube.version>
+    <jkube.version>1.14.0</jkube.version>
     <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
     <jkube.enricher.jkube-project-label.group>northwind-traders</jkube.enricher.jkube-project-label.group>
     <!-- // -->
