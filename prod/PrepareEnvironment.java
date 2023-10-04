@@ -165,6 +165,8 @@ public class PrepareEnvironment {
         .addToContainers(new ContainerBuilder()
           .withName(RABBIT_MQ)
           .withImage("rabbitmq:3.11-management")
+          // Alternative image source with no rate limit (as opposed to docker.io/hub.docker.com)
+          .withImage("public.ecr.aws/docker/library/rabbitmq:3.11-management")
           .addToEnv(new EnvVar("RABBITMQ_DEFAULT_USER", USER, null))
           .addToEnv(new EnvVar("RABBITMQ_DEFAULT_PASS", PASSWORD, null))
           .addNewPort().withContainerPort(5672).endPort()
