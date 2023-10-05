@@ -3,7 +3,7 @@
 Northwind Traders
 =================
 
-![A diagram of the project's architecture](./diagram.png)
+![A diagram of the project's architecture](./diagram-remote.png)
 
 ## Deploy the application
 
