@@ -47,7 +47,7 @@ commands:
       component: tools
       workingDir: ${PROJECT_SOURCE}
       commandLine: |
-        source $HOME/.sdkman/bin/sdkman-init.sh && mvn clean package
+         mvn clean package
       group:
         kind: build
         isDefault: true
@@ -56,7 +56,6 @@ commands:
       label: "2. Deploy"
       component: tools
       commandLine: |
-        source $HOME/.sdkman/bin/sdkman-init.sh && \
         oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
         ./deploy-to-openshift.sh
       workingDir: ${PROJECT_SOURCE}
@@ -72,14 +71,13 @@ commands:
       label: "4. Start Development Mode"
       component: tools
       commandLine: |
-        source $HOME/.sdkman/bin/sdkman-init.sh && mvn -pl northwind quarkus:dev
+        mvn -pl northwind quarkus:dev
       workingDir: ${PROJECT_SOURCE}
   - id: run-dev-env
     exec:
       label: "5. JKube Development Session"
       component: tools
       commandLine: |
-        source $HOME/.sdkman/bin/sdkman-init.sh && \
         oc project $(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace) && \
         mvn -pl northwind oc:remote-dev
       workingDir: ${PROJECT_SOURCE}
