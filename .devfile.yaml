@@ -47,7 +47,7 @@ commands:
       component: tools
       workingDir: ${PROJECT_SOURCE}
       commandLine: |
-         mvn clean package
+        mvn clean package
       group:
         kind: build
         isDefault: true
